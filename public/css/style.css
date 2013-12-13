@@ -54,6 +54,16 @@ a:focus, a:active, a:hover {
   background: #666;
 }
 
+/*copyright*/
+.copyright {
+  height: 30px;
+  line-height: 30px;
+  color: #999;
+  font-size: 14px;
+  border-top: 1px solid #eee;
+  text-align: center;
+}
+
 /* desert scheme ported from vim to google prettify */
 pre.prettyprint { display: block; background-color: #333 }
 pre .nocode { background-color: none; color: #000 }

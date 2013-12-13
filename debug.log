@@ -1,0 +1,61 @@
+date: 2013-12-13 14:28:03.105
+argv: g:\nodejs\node.exe c:\Users\Administrator\AppData\Roaming\npm\node_modules\hexo\bin\hexo generate
+os: Windows_NT 6.1.7601 win32 ia32
+version:
+  hexo: 2.3.0
+  http_parser: 1.0
+  node: 0.10.22
+  v8: 3.14.5.9
+  ares: 1.9.0-DEV
+  uv: 0.10.19
+  zlib: 1.2.3
+  modules: 11
+  openssl: 1.0.1e
+---
+
+[debug] 14:28:02.372 Configuration file load successfully
+[debug] 14:28:02.373 Version info checked successfully
+[debug] 14:28:02.374 Loading the database...
+[debug] 14:28:02.896 Theme layout loaded
+[debug] 14:28:02.920 Theme source loaded
+[debug] 14:28:02.922 Theme configuration loaded
+[debug] 14:28:02.927 Theme i18n loaded
+[debug] 14:28:02.991 Processed: _posts/css-syntax.md
+[debug] 14:28:02.993 Processed: _posts/flatsns.md
+[debug] 14:28:03.023 Processed: _posts/Javascript-syntax.md
+[debug] 14:28:03.055 Processed: _posts/php-syntax.md
+[debug] 14:28:03.067 Cache saved
+[info] 14:28:03.067 Files loaded in 0.448s
+[debug] 14:28:03.083 Public folder cleared: css\bootstrap.css,css\style.css,css\style.min.css,font\coveredbyyourgrace-webfont.eot,font\coveredbyyourgrace-webfont.ttf,font\coveredbyyourgrace-webfont.svg,font\coveredbyyourgrace-webfont.woff,font\fontello.eot,font\fontello.svg,font\fontello.ttf,font\fontello.woff,img\logo.svg,js\jquery-2.0.1.min.js,js\prettify.js,less\alerts.less,less\badges.less,less\bootstrap.less,less\breadcrumbs.less,less\button-groups.less,less\buttons.less,less\carousel.less,less\close.less,less\code.less,less\component-animations.less,less\dropdowns.less,less\forms.less,less\glyphicons.less,less\grid.less,less\input-groups.less,less\jumbotron.less,less\labels.less,less\list-group.less,less\media.less,less\modals.less,less\mixins.less,less\navbar.less,less\navs.less,less\normalize.less,less\pager.less,less\pagination.less,less\panels.less,less\popovers.less,less\progress-bars.less,less\responsive-utilities.less,less\scaffolding.less,less\tables.less,less\theme.less,less\thumbnails.less,less\tooltip.less,less\type.less,less\utilities.less,less\variables.less,less\wells.less,archives\index.html,archives\2013\index.html,archives\2013\09\index.html,archives\2013\12\index.html,index.html,2013\12\13\flatsns\index.html,2013\09\13\php-syntax\index.html,2013\09\13\Javascript-syntax\index.html,2013\09\13\css-syntax\index.html,tags\php\index.html,tags\编码规范\index.html,tags\团队协作\index.html
+[debug] 14:28:03.091 Render archive: archives/
+[debug] 14:28:03.091 Render archive: archives/2013/
+[debug] 14:28:03.091 Render archive: archives/2013/09/
+[debug] 14:28:03.091 Render archive: archives/2013/12/
+[debug] 14:28:03.091 Render index: 
+[debug] 14:28:03.091 Render post: 2013/12/13/flatsns/
+[debug] 14:28:03.091 Render post: 2013/09/13/php-syntax/
+[debug] 14:28:03.091 Render post: 2013/09/13/Javascript-syntax/
+[debug] 14:28:03.091 Render post: 2013/09/13/css-syntax/
+[debug] 14:28:03.091 Render tag: tags/php/
+[debug] 14:28:03.091 Render tag: tags/编码规范/
+[debug] 14:28:03.091 Render tag: tags/团队协作/
+[error] 14:28:03.103 HexoError: Render failed: index.html
+SyntaxError: g:\xampp\htdocs\blog\themes\pacman\layout\index.ejs:3
+    1| <div id="main">
+    2| <% page.posts.each(function(item){ %>
+ >> 3|   <%- partial('_partial/article', {item: item, index: true}) %>
+    4| <% }); %>
+    5| <%- partial('_partial/pagination') %>
+    6| </div>
+
+Unexpected reserved word in "g:\\xampp\\htdocs\\blog\\themes\\pacman\\layout\\_partial\\article.ejs"
+    at Object.Function (<anonymous>)
+    at exports.compile (c:\Users\Administrator\AppData\Roaming\npm\node_modules\hexo\node_modules\ejs\lib\ejs.js:236:14)
+    at Object.exports.render (c:\Users\Administrator\AppData\Roaming\npm\node_modules\hexo\node_modules\ejs\lib\ejs.js:278:66)
+    at Object.module.exports [as ejs] (c:\Users\Administrator\AppData\Roaming\npm\node_modules\hexo\lib\plugins\renderer\ejs.js:5:14)
+    at Object.exports.renderSync (c:\Users\Administrator\AppData\Roaming\npm\node_modules\hexo\lib\render.js:143:29)
+    at render (c:\Users\Administrator\AppData\Roaming\npm\node_modules\hexo\lib\plugins\helper\partial.js:28:22)
+    at Object.module.exports [as partial] (c:\Users\Administrator\AppData\Roaming\npm\node_modules\hexo\lib\plugins\helper\partial.js:41:12)
+    at buf.push.__stack.lineno (eval at <anonymous> (c:\Users\Administrator\AppData\Roaming\npm\node_modules\hexo\node_modules\ejs\lib\ejs.js:236:14), <anonymous>:29:121)
+    at Query.forEach.Query.each (c:\Users\Administrator\AppData\Roaming\npm\node_modules\hexo\node_modules\warehouse\lib\query.js:71:5)
+    at eval (eval at <anonymous> (c:\Users\Administrator\AppData\Roaming\npm\node_modules\hexo\node_modules\ejs\lib\ejs.js:236:14), <anonymous>:29:61)

@@ -1,0 +1,244 @@
+
+  <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+  <title>Javascript编码规范 | Max Yu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="author" content="Max Yu">
+  
+  <meta name="description" content="命名规范
+通用命名规则
+
+所有变量必须是有意义的英文，严厉禁止拼音；  
+变量命名采用小驼峰法(第一个单词首字母小写，其余单词首字母大写)；  
+变量允许使用公认英文缩写，例如nav；  
+常量必须所有单词大写，并且每个单词间加下划线；  
+类命名必须是大驼峰法(所有单词第一个字母均大写)；  
+私">
+  
+  
+  <meta property="og:title" content="Javascript编码规范"/>
+  <meta property="og:site_name" content="Max Yu"/>
+  <link href="/image/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Max Yu" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/bootstrap.css" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+    <body>
+      <header>
+        <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">导航</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand">Max Yu</a>
+    </div>
+    <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            
+          <li><a href="/">博客</a></li>
+        
+          <li><a href="/archives">存档</a></li>
+        
+          <li><a href="/about">关于</a></li>
+        
+          </ul>
+      </div>
+  </div>
+</div>
+      </header>
+      <div class="container main">
+        <div id="main" class="postpart">
+	<header class="clearfix">
+	  <h2><a href="/2013/09/13/Javascript-syntax/" title="Javascript编码规范">Javascript编码规范</a></h2>
+	  <p>By
+	  
+	 	 <a href="https://plus.google.com/116338260303228776998?rel=author" title="Max Yu">Max Yu</a>
+	  
+	  on<time datetime="2013-09-13T03:54:03.000Z">Sep 13 2013</time></p>
+	</header>
+	<article>     
+	     <h2>命名规范</h2>
+<h4>通用命名规则</h4>
+<ul>
+<li>所有变量必须是有意义的英文，严厉禁止拼音；  </li>
+<li>变量命名采用小驼峰法(第一个单词首字母小写，其余单词首字母大写)；  </li>
+<li>变量允许使用公认英文缩写，例如<code>nav</code>；  </li>
+<li>常量必须所有单词大写，并且每个单词间加下划线；  </li>
+<li>类命名必须是大驼峰法(所有单词第一个字母均大写)；  </li>
+<li>私有类的变量属性成员， 建议使用混合式命名，并前面下下划线；  </li>
+<li>“on”只能用作事件的命名；  </li>
+<li>所有全局变量必须初始化；  </li>
+<li>保留字以及特有的dom属性不能作为变量名。  </li>
+</ul>
+<h4>变量命名规范</h4>
+<p>类型前缀 + 有意义的单词</p>
+<ul>
+<li>字符串：sXXX，如：sName，sHtml；</li>
+<li>数字：nXXX，如：nPage，nTotal；</li>
+<li>逻辑：bXXX，如：bChecked，bHasLogin；</li>
+<li>数组：aXXX，如：aList，aGroup；</li>
+<li>正则：rXXX，如：rDomain，rEmail；</li>
+<li>函数：fXXX，如：fGetList；</li>
+<li>DOM节点：dXX，如：dDiv，dSpan；</li>
+<li>其他类型：oXXX，如：oButton，oDate；</li>
+<li>特殊简写：小范围作用域临时变量，如函数内部的局部变量或参数：o(Object)、e(Element)、evt(event)、err(errot)等；</li>
+<li>循环变量：i、j、k以此类推；</li>
+</ul>
+<h4>函数命名规范</h4>
+<ul>
+<li>普通函数：动词+名词，如：fGetList、fGetVersion；</li>
+<li>涉及逻辑返回值的函数：is、has、can，如：fisAdmin、fhasChild；</li>
+<li>内部函数：_f+上面规则，如：fLoopCount；</li>
+</ul>
+<h2>书写规范</h2>
+<h4>对齐和缩进</h4>
+<ul>
+<li>必须使用 Tab 键进行代码缩进，以节约代码大小，建议设置编辑器的tab为4个空格的宽度（而不是4个空格）；</li>
+<li>所有语句结束后，必须使用 ; 号结束；</li>
+<li>大括号前面不能换行；</li>
+<li>操作符必须使用空格隔开；</li>
+</ul>
+<h4>语法结构</h4>
+<p>普通代码段应该如下：</p>
+<pre><code><span class="function"><span class="title">while</span><span class="params">(!is<span class="variable">Done</span>)</span> {
+    <span class="title">doSomething</span><span class="params">()</span>;
+    <span class="title">isDone</span> = <span class="title">moreToDo</span><span class="params">()</span>;
+}</code></pre>
+<p>变量定义方法如下：</p>
+<pre><code><span class="title">var</span> a = null;
+<span class="title">var</span> b = <span class="number">1</span>;
+<span class="title">var</span> c = <span class="number">0</span>;</code></pre>
+<p>函数定义方法如下：</p>
+<pre><code>var funcA = <span class="keyword">function</span>() {
+    var a = <span class="number">0</span>;
+    <span class="keyword">...</span>
+}</code></pre>
+<p>if 语句应该像这样：</p>
+<pre><code><span class="function"><span class="title">if</span><span class="params">(some<span class="variable">Condition</span>)</span> {
+    <span class="title">statements</span>;
+} <span class="title">else</span> <span class="title">if</span><span class="params">(some<span class="variable">OtherCondition</span>)</span> {
+    <span class="title">statements</span>;
+} <span class="title">else</span> {
+    <span class="title">statements</span>;
+}</code></pre>
+<p>for 语句应该像这样：</p>
+<pre><code><span class="function"><span class="title">for</span><span class="params">(initialization; condition; update)</span> {
+    <span class="title">statements</span>;
+}</code></pre>
+<p>while 语句应该像这样：</p>
+<pre><code><span class="function"><span class="title">while</span><span class="params">(!is<span class="variable">Done</span>)</span> {
+    <span class="title">doSomething</span><span class="params">()</span>;
+    <span class="title">isDone</span> = <span class="title">moreToDo</span><span class="params">()</span>;
+}</code></pre>
+<p>do … while 语句应该像这样：</p>
+<pre><code><span class="keyword">do</span> {
+    statements;
+} <span class="keyword">while</span>(<span class="keyword">condition</span>);</code></pre>
+<p>switch 语句应该像这样： </p>
+<pre><code>switch(condition) {
+    case <span class="string">"A"</span>: 
+        statements<span class="comment">;</span>
+        <span class="keyword">break</span><span class="comment">;</span>
+    case <span class="string">"B"</span>: 
+        statements<span class="comment">;</span>
+        <span class="keyword">break</span><span class="comment">;</span>
+    default:
+        statements<span class="comment">;</span>
+        <span class="keyword">break</span><span class="comment">;</span>
+}</code></pre>
+<p>try … catch 语句应该像这样：</p>
+<pre><code><span class="keyword">try</span> <span class="cell">{
+    statements;
+}</span> <span class="keyword">catch</span>(ex) <span class="cell">{
+    statements;
+}</span> finally <span class="cell">{
+    statements;
+}</span></code></pre>
+<p>单行的 if - else，while 或者 for 语句也必须加入括号：</p>
+<pre><code><span class="function"><span class="title">if</span><span class="params">(condition)</span> {
+    <span class="title">statement</span>;
+}
+<span class="title">while</span><span class="params">(condition)</span> {
+    <span class="title">statement</span>;
+}
+
+<span class="title">for</span><span class="params">(intialization; condition; update)</span> {
+    <span class="title">statement</span>;
+}</code></pre>
+<h2>Javascript编写风格</h2>
+<h4>对象定义规范</h4>
+<p>在Javascript中，所有类型都是对象，包括string类型。函数的定义，统一使用以下方式：</p>
+<pre><code>var a = <span class="keyword">function</span>() {<span class="keyword">...</span>};</code></pre>
+<p>最后要加上 “;”号，不要再使用以下方式：</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">a</span><span class="params">()</span> {</span>}</code></pre>
+<p>对象定义规范：</p>
+<ul>
+<li>string类型定义：<code>var str = &#39;xxxxxx&#39;;</code></li>
+<li>function类型定义：<code>var func = function() {...};</code></li>
+<li>array类型定义：<code>var arr = new Array();</code></li>
+<li>object类型定义：<code>var obj = {&#39;name&#39;: &#39;xxxxxx&#39;, &#39;age&#39;: &#39;10&#39;}</code></li>
+</ul>
+<h4>事件监听</h4>
+<p>开发中统一使用module.js对对象事件(DOM节点)进行监听。</p>
+<p><strong>块状节点：</strong>model-node，包括的标签：div、ul、li、dl、form等，例如：</p>
+<pre><code><span class="tag">&lt;<span class="title">div</span> <span class="attribute">model-node</span>=<span class="value">"testmodel"</span> <span class="attribute">model-args</span>=<span class="value">"name=testname&amp;value=testvalue"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></pre>
+<p><strong>独立事件节点：</strong>event-node，包括的标签：a、span、label、strong、input、select、button、img、textarea、h1、h2、h3、h4、i等，例如：</p>
+<pre><code><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"javascript:void(0);"</span> <span class="attribute">event-node</span>=<span class="value">"testevent"</span> <span class="attribute">event-args</span>=<span class="value">"name=testname&amp;value=testvalue"</span>&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span></code></pre>
+<p><strong>事件监听方法：</strong>load、click、mouseenter、mouseleave</p>
+    
+	</article>
+	
+
+	
+	<div class="pagepart clearfix">
+ 
+	<a href="/2013/09/13/php-syntax/" class="prev" title="PHP编码规范">&laquo; PHP编码规范</a>
+ 
+ 
+	<a href="/2013/09/13/css-syntax/" class="next" title="CSS编码规范">CSS编码规范 &raquo;</a>
+ 
+</div>
+	
+</div>  
+      </div>
+      <footer><div id="footer" >
+	<div class="container main">
+		<div class="social-font">
+			
+			<a href="http://weibo.com/436062867" target="_blank" title="新浪微博"><i class="icon-sina-weibo"></i></a>
+			
+			
+			<a href="https://twitter.com/yangjiansky" target="_blank" title="twitter"><i class="icon-twitter"></i></a>
+			
+			
+			<a href="https://github.com/A-limon" target="_blank" title="github"><i class="icon-github"></i></a>
+			
+			
+			<a href="https://www.facebook.com/yangjian" target="_blank" title="facebook"><i class="icon-facebook-squared"></i></a>
+			
+		</div>
+		<p class="copyright">Powered by <a href="http://zespia.tw/hexo/" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2013 
+		
+		<a href="http://yuwenhui.github.io" title="Max Yu">Max Yu</a>
+		
+		</p>
+  </div>
+</div></footer>
+      <script src="/js/jquery-2.0.1.min.js"></script>
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+  $(window).load(function(){
+    $("pre").addClass("prettyprint");
+    prettyPrint();
+  })
+</script>
+    </body>
+  </html>

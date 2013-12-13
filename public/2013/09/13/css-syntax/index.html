@@ -1,0 +1,172 @@
+
+  <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+  <title>CSS编码规范 | Max Yu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="author" content="Max Yu">
+  
+  <meta name="description" content="包括CSS命名规范，书写规范，注释规范。">
+  
+  
+  <meta property="og:title" content="CSS编码规范"/>
+  <meta property="og:site_name" content="Max Yu"/>
+  <link href="/image/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Max Yu" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/bootstrap.css" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+</head>
+    <body>
+      <header>
+        <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">导航</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/" class="navbar-brand">Max Yu</a>
+    </div>
+    <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            
+          <li><a href="/">博客</a></li>
+        
+          <li><a href="/archives">存档</a></li>
+        
+          <li><a href="/about">关于</a></li>
+        
+          </ul>
+      </div>
+  </div>
+</div>
+      </header>
+      <div class="container main">
+        <div id="main" class="postpart">
+	<header class="clearfix">
+	  <h2><a href="/2013/09/13/css-syntax/" title="CSS编码规范">CSS编码规范</a></h2>
+	  <p>By
+	  
+	 	 <a href="https://plus.google.com/116338260303228776998?rel=author" title="Max Yu">Max Yu</a>
+	  
+	  on<time datetime="2013-09-13T03:54:03.000Z">Sep 13 2013</time></p>
+	</header>
+	<article>     
+	     <h2>命名规范</h2>
+<p>1.尽量使用英文命名原则，严格禁止拼音、数字<br>2.尽量不加缩写，除非已约定的缩写方式，如：nav<br>3.id和class全部小写，采用该版块的英文单词或组合命名，以中杠“-”分割，如：nav-tabs(导航标签/nav+tabs)  </p>
+<h2>书写规范</h2>
+<p>必须使用Tab进行代码缩进，建议设置Tab为4个空格的宽度，而不是4个空格；<br>属性与“{}”之间，属性名和值之间必须有空格，属性必须换行，“{}”必须换行显示(即使只有一个属性)，如：      </p>
+<pre><code><span class="class">.nav-tabs</span> <span class="rules">{
+    <span class="rule"><span class="attribute">border-bottom</span>:<span class="value"> <span class="number">1</span>px solid <span class="hexcolor">#ddd</span>;</span></span>
+<span class="rule">}</span></span></code></pre>
+<p>属性值后面必须加分号“;”，即使只有一个；<br>RGB颜色值有字母的必须采用小写，可缩写的尽量使用缩写，如：#ffcccc缩写为#fcc；<br>针对特殊浏览器的属性，应写在标准属性之前，左侧对齐，如：</p>
+<pre><code>-webkit-border-<span class="method">radius:</span> <span class="number">3</span>px;
+-moz-border-<span class="method">radius:</span> <span class="number">3</span>px;
+border-<span class="method">radius:</span> <span class="number">3</span>px;</code></pre>
+<p>按照元素模型由外及内，由整体到细节的书写顺序，属性值大致分为五组：</p>
+<ul>
+<li>位置：position,top,right,bottom,left,float</li>
+<li>盒模型属性：display,margin,padding,width,height</li>
+<li>边框与背景：border,background</li>
+<li>段落与文本：line-height,text-indent,font,color,text-decoration,text-align…</li>
+<li>其他属性：overflow,cursor,visibility,…</li>
+</ul>
+<p>标准的元素属性值顺序如：</p>
+<pre><code><span class="class">.carousel-control</span> <span class="rules">{
+    <span class="rule"><span class="attribute">position</span>:<span class="value"> absolute;</span></span>
+    <span class="rule"><span class="attribute">top</span>:<span class="value"> <span class="number">40</span>%;</span></span>
+    <span class="rule"><span class="attribute">left</span>:<span class="value"> <span class="number">15</span>px;</span></span>
+    <span class="rule"><span class="attribute">float</span>:<span class="value"> left;</span></span>
+    <span class="rule"><span class="attribute">display</span>:<span class="value"> inline-block;</span></span>
+    <span class="rule"><span class="attribute">margin-top</span>:<span class="value"> <span class="number">20</span>px;</span></span>
+    <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">5</span>px;</span></span>
+    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">40</span>px;</span></span>
+    <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">40</span>px;</span></span>
+    <span class="rule"><span class="attribute">border</span>:<span class="value"> <span class="number">3</span>px solid <span class="hexcolor">#fff</span>;</span></span>
+    <span class="rule"><span class="attribute">-webkit-border-radius</span>:<span class="value"> <span class="number">23</span>px;</span></span>
+    <span class="rule"><span class="attribute">-moz-border-radius</span>:<span class="value"> <span class="number">23</span>px;</span></span>
+    <span class="rule"><span class="attribute">border-radius</span>:<span class="value"> <span class="number">23</span>px;</span></span>
+    <span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="hexcolor">#222</span>;</span></span>
+    <span class="rule"><span class="attribute">line-height</span>:<span class="value"> <span class="number">30</span>px;</span></span>
+    <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">60</span>px;</span></span>
+    <span class="rule"><span class="attribute">font-weight</span>:<span class="value"> <span class="number">100</span>;</span></span>
+    <span class="rule"><span class="attribute">color</span>:<span class="value"> <span class="hexcolor">#fff</span>;</span></span>
+    <span class="rule"><span class="attribute">text-align</span>:<span class="value"> center;</span></span>
+    <span class="rule"><span class="attribute">opacity</span>:<span class="value"> <span class="number">0.5</span>;</span></span>
+    <span class="rule"><span class="attribute">filter</span>:<span class="value"> <span class="function">alpha(opacity=<span class="number">50</span>)</span>;</span></span>
+<span class="rule">}</span></span></code></pre>
+<p>class和id连写必须换行，如：</p>
+<pre><code><span class="class">.btn-primary</span><span class="pseudo">:hover</span>,
+<span class="class">.btn-primary</span><span class="pseudo">:focus</span>,
+<span class="class">.btn-primary</span><span class="pseudo">:active</span>,
+<span class="class">.btn-primary</span><span class="class">.active</span>,
+<span class="class">.btn-primary</span><span class="class">.disabled</span> <span class="rules">{
+    <span class="rule"><span class="attribute">color</span>:<span class="value"> <span class="hexcolor">#fff</span>;</span></span>
+<span class="rule">}</span></span></code></pre>
+<p>请勿使用冗余低效的CSS写法，如：</p>
+<pre><code><span class="title">ul</span> li a span {
+}</code></pre>
+<h2>注释规范</h2>
+<h4>文件头部注释</h4>
+<p>文件头部注释主要用来阐述此文件的名称，版本，作者。按照以下形式书写：</p>
+<pre><code>/<span class="variable">*!</span>
+ * family.css
+ * Version <span class="number">2013092614</span>
+ * Designed by <span class="variable">@yuwenhui</span> &lt;yuwenhui1986<span class="variable">@163</span>.com&gt;
+ <span class="variable">*/</span></code></pre>
+<p>其中版本号的格式为：yyyyMMDDHH</p>
+<h4>行内注释</h4>
+<p>行内注释主要说明本段代码所在的模块，如：</p>
+<pre><code>/<span class="variable">*家</span>谱主页<span class="variable">*/</span></code></pre>
+    
+	</article>
+	
+
+	
+	<div class="pagepart clearfix">
+ 
+	<a href="/2013/09/13/Javascript-syntax/" class="prev" title="Javascript编码规范">&laquo; Javascript编码规范</a>
+ 
+ 
+</div>
+	
+</div>  
+      </div>
+      <footer><div id="footer" >
+	<div class="container main">
+		<div class="social-font">
+			
+			<a href="http://weibo.com/436062867" target="_blank" title="新浪微博"><i class="icon-sina-weibo"></i></a>
+			
+			
+			<a href="https://twitter.com/yangjiansky" target="_blank" title="twitter"><i class="icon-twitter"></i></a>
+			
+			
+			<a href="https://github.com/A-limon" target="_blank" title="github"><i class="icon-github"></i></a>
+			
+			
+			<a href="https://www.facebook.com/yangjian" target="_blank" title="facebook"><i class="icon-facebook-squared"></i></a>
+			
+		</div>
+		<p class="copyright">Powered by <a href="http://zespia.tw/hexo/" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2013 
+		
+		<a href="http://yuwenhui.github.io" title="Max Yu">Max Yu</a>
+		
+		</p>
+  </div>
+</div></footer>
+      <script src="/js/jquery-2.0.1.min.js"></script>
+<script src="/js/prettify.js"></script>
+<script type="text/javascript">
+  $(window).load(function(){
+    $("pre").addClass("prettyprint");
+    prettyPrint();
+  })
+</script>
+    </body>
+  </html>

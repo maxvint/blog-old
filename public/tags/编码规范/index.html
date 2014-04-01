@@ -1,109 +1,590 @@
-
-  <!DOCTYPE HTML>
-<html lang="zh-CN">
+<!DOCTYPE HTML>
+<html>
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   
   <title>编码规范 | Max Yu</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
   <meta name="author" content="Max Yu">
   
   
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
   
   <meta property="og:site_name" content="Max Yu"/>
-  <link href="/image/favicon.ico" rel="icon">
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
   <link rel="alternate" href="/atom.xml" title="Max Yu" type="application/atom+xml">
-  <link rel="stylesheet" href="/css/bootstrap.css" type="text/css">
-  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
 </head>
-    <body>
+
+<body>
+  <header id="header" class="inner"><div class="blog-title">
+  <h1><a href="/">Max Yu</a></h1>
+  <h4><a href="/">A PHPer and interested in UI JavaScript Node.js &amp; Ruby</a></h4>
+</div>
+<nav id="main-nav">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="wrapper">
+
+
+  
+    <div id="content" class="inner">
+  <article class="post">
+    
+    <div class="post-content">
       <header>
-        <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">导航</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a href="/" class="navbar-brand">Max Yu</a>
-    </div>
-    <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            
-          <li><a href="/">博客</a></li>
         
-          <li><a href="/archives">存档</a></li>
+          <div class="icon"></div>
+          <time datetime="2013-09-13T03:54:03.000Z"><a href="/2013/09/13/php-syntax/">9月 13 2013</a></time>
         
-          <li><a href="/about">关于</a></li>
         
-          </ul>
-      </div>
-  </div>
-</div>
+  
+    <h1 class="title"><a href="/2013/09/13/php-syntax/">PHP编码规范</a></h1>
+  
+
       </header>
-      <div class="container main">
+      <div class="entry">
         
+          <h2>编码规范</h2>
+<p>文件编码统一为：<strong>UTF-8</strong>，请开发人员调整编辑器的文件编码为UTF-8，并关闭UTF-8 BOM的功能。请不要使用windows自带的记事本编辑项目文件。</p>
+<h2>命名规范</h2>
+<h4>类命名</h4>
+<p>使用<strong>大驼峰法</strong>命名，即每个单词的首字母均大写；</p>
+<pre><code><span class="class"><span class="keyword">class</span> <span class="title">SimpleDB</span> {</span>
 
-<div id="main" class="postpart archivepart">
-  <h2>编码规范</h2>
-   
-      <section class="post">
-        <a href="/2013/09/13/php-syntax/" title="PHP编码规范">
-        <h1>PHP编码规范</h1>
-        <time datetime="2013-09-13T03:54:03.000Z">Sep 13 2013</time>
-        </a>
-      </section>
+}</code></pre>
+<h4>函数命名</h4>
+<p>使用<strong>小驼峰法</strong>命名，即第一个单词首字母小写，其余单词首字母均大写；</p>
+<pre><code><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">(<span class="variable">$downloadPath</span> = <span class="string">''</span>)</span> {</span>
+
+}</code></pre>
+<h4>变量命名</h4>
+<p>使用<strong>小驼峰法</strong>命名，即第一个单词首字母小写，其余单词首字母均大写；</p>
+<pre><code><span class="title">protected</span> <span class="variable">$callbackFunctions</span>;</code></pre>
+<p>如为私有变量，请在变量名前方加上下划线。</p>
+<pre><code><span class="title">private</span> <span class="variable">$_adapter</span>;</code></pre>
+<h4>常量命名</h4>
+<p>所有字母均大写，前后加上双下划线，单词之间用下划线分割；如果为ThinkSNS内部常量，则使用tsdefine();</p>
+<pre><code><span class="function"><span class="title">define</span><span class="params">('<span class="variable">SITE_PATH</span>', <span class="function_name">dirname</span>(<span class="variable">_</span>_<span class="variable">FILE__</span>))</span>;
+<span class="title">tsdefine</span><span class="params">('<span class="variable">IS_HTTPS</span>', <span class="number">0</span>)</span>;</code></pre>
+<h2>注释规范</h2>
+<h4>文件头部注释</h4>
+<p>文件头部注释主要用来阐述此文件的作用，作者，版本。按照以下形式书写：</p>
+<pre><code>&lt;?php
+<span class="javadoc">/**
+ * 用户认证模型 - 数据对象模型
+ * <span class="javadoctag">@author</span> Yuwenhui &lt;yuwenhui1986<span class="javadoctag">@gmail</span>.com&gt;
+ * <span class="javadoctag">@version</span> $Id$
+ */</span></code></pre>
+<p>其中@author为作者的名称，后面&lt;&gt;中为电子邮箱；@version定义为$Id$是为了匹配svn的关键字。</p>
+<h4>引用文件和定义常量注释</h4>
+<p>文件的引用和常量的定义一般都放置在文件的开头部分。采用双斜线注释法(//)。</p>
+<pre><code>// 定义<span class="type">MySQL</span>查询输出封装为多结果，必须用循环处理
+<span class="title">define</span>('<span class="type">CLIENT_MULTI_RESULTS'</span>, <span class="number">131072</span>);
+
+// 加载上传操作类
+<span class="title">require_once</span> <span class="type">SITE_PATH</span>.'/addons/library/<span class="type">UploadFile</span>.<span class="class"><span class="keyword">class</span>.php';</code></pre>
+<p>多行注释，使用如下形式：</p>
+<pre><code><span class="javadoc">/**
+ * Cookie 设置、获取、清除 (支持数组或对象直接设置) 2009-07-9
+ * 1 获取cookie: cookie('name')
+ * 2 清空当前设置前缀的所有cookie: cookie(null)
+ * 3 删除指定前缀所有cookie: cookie(null,'think_') | 注：前缀将不区分大小写
+ * 4 设置cookie: cookie('name','value') | 指定保存时间: cookie('name','value',3600)
+ * 5 删除cookie: cookie('name',null)
+ * $option 可用设置prefix,expire,path,domain
+ * 支持数组形式:cookie('name','value',array('expire'=&gt;1,'prefix'=&gt;'think_'))
+ * 支持query形式字符串:cookie('name','value','prefix=tp_&amp;expire=10000')
+ * 2010-1-17 去掉自动序列化操作，兼容其他语言程序。
+ */</span></code></pre>
+<h4>类(接口)注释</h4>
+<p>一个类(接口)在声明的时候必须声明其作用。</p>
+<pre><code><span class="javadoc">/**
+ * 功能升级类
+ * 功能1：
+ * 功能2：
+ * <span class="javadoctag">@author</span> 水上铁 &lt;476974493<span class="javadoctag">@qq</span>.com&gt;
+ * <span class="javadoctag">@version</span> $Id$
+ */</span>
+<span class="class"><span class="keyword">class</span> <span class="title">Image</span> {</span>
+
+}</code></pre>
+<p>注释第一行声明类的作用，后面为类实现的主要功能；@author为作者的名称，后面&lt;&gt;中为电子邮箱；@version定义为$Id$是为了匹配svn的关键字。</p>
+<h4>函数注释</h4>
+<p>函数的注释包括函数作用、参数和返回值。注意如果是无返回的函数，必须指明@return void。</p>
+<pre><code><span class="javadoc">/**
+ * 获取语言配置内容列表
+ * <span class="javadoctag">@param</span> array $map 查询条件
+ * <span class="javadoctag">@return</span> array 语言配置内容列表
+ */</span>
+<span class="keyword">public</span> function getLangContent($map) {
+
+}
+
+<span class="javadoc">/**
+ * 更改语言配置内容
+ * <span class="javadoctag">@param</span> array $data 语言配置内容
+ * <span class="javadoctag">@param</span> integer $sid 语言资源ID
+ * <span class="javadoctag">@return</span> integer 是否更改成功，1表示成功；0表示失败
+ */</span>
+<span class="keyword">public</span> function updateLangData($data, $sid) {
+
+}</code></pre>
+<p>注释第一行声明函数的作用；@param指函数的参数；@return是函数的返回值。</p>
+<h4>程序行间注释</h4>
+<p>行间注释采用双斜线注释法</p>
+<pre><code><span class="comment">// 更新缓存文件</span>
+ <span class="variable">$this</span>-&gt;createCacheFile(<span class="variable">$addData</span>[<span class="string">'appname'</span>], <span class="variable">$addData</span>[<span class="string">'filetype'</span>]);</code></pre>
+<h2>书写规范</h2>
+<h4>对齐和缩进</h4>
+<p>每个缩进的单位约定是一个TAB(4个空白字符宽度，而不是4个空格)，请每个开发人员在编辑器(UltraEdit、EditPlus、Eclipse、Sublime Text等)中进行强制设定，以防在编写代码时遗忘而造成格式上的不规范。</p>
+<h4>大括号{}、if和switch</h4>
+<p>首括号 { 与关键词同行，尾括号 } 与关键字同列；</p>
+<pre><code><span class="keyword">if</span>(<span class="variable">$condition</span>) {
+    <span class="keyword">switch</span>(<span class="variable">$var</span>) {
+        <span class="keyword">case</span> <span class="number">1</span>: <span class="keyword">echo</span> <span class="string">'var is 1'</span>; <span class="keyword">break</span>;
+        <span class="keyword">case</span> <span class="number">2</span>: <span class="keyword">echo</span> <span class="string">'var is 2'</span>; <span class="keyword">break</span>;
+        <span class="keyword">default</span>: <span class="keyword">echo</span> <span class="string">'var is neither 1 or 2'</span>; <span class="keyword">break</span>;
+    }
+}</code></pre>
+<p>if结构中，else和elseif与前后两个大括号同行，左右各一个空格。另外，即便if后只有一行语句，仍然需要加入大括号，以保证结构清晰；</p>
+<pre><code><span class="function"><span class="title">if</span><span class="params">($condition)</span> {
+    $<span class="title">var</span>++;
+} <span class="title">else</span> {
+    $<span class="title">var</span>--;
+}</code></pre>
+<p>switch结构中，通常当一个case块处理后，将跳过之后的case块处理，因此大多数情况下需要添加break。break的位置视程序逻辑，与case同在一行，或新起一行均可，但同一switch体中，break的位置格式应当保持一致。</p>
+<pre><code><span class="keyword">if</span>(<span class="variable">$condition</span>) {
+    <span class="keyword">switch</span>(<span class="variable">$var</span>) {
+        <span class="keyword">case</span> <span class="number">1</span>: <span class="keyword">echo</span> <span class="string">'var is 1'</span>; <span class="keyword">break</span>;
+        <span class="keyword">case</span> <span class="number">2</span>: <span class="keyword">echo</span> <span class="string">'var is 2'</span>; <span class="keyword">break</span>;
+        <span class="keyword">default</span>: <span class="keyword">echo</span> <span class="string">'var is neither 1 or 2'</span>; <span class="keyword">break</span>;
+    }
+} <span class="keyword">else</span> {
+    <span class="keyword">switch</span>(<span class="variable">$str</span>) {
+        <span class="keyword">case</span> <span class="string">'abc'</span>:
+            <span class="variable">$result</span> = <span class="string">'abc'</span>;
+            <span class="keyword">break</span>;
+        <span class="keyword">default</span>:
+            <span class="variable">$result</span> = <span class="string">'unknown'</span>;
+            <span class="keyword">break</span>;
+    }
+}</code></pre>
+<h4>运算符、小括号、关键词和函数</h4>
+<p>每个运算符与两边参与运算的值或表达式中间要有一个空格，唯一的特例是字符连接运算符号 . 两边不加空格；</p>
+<pre><code><span class="variable">$result</span> = ((<span class="variable">$a</span> + 1) * 3 / 2 + <span class="variable">$num</span>)).<span class="string">'Test'</span>;
+<span class="variable">$condition</span> ? func1(<span class="variable">$var</span>) : func2(<span class="variable">$var</span>);</code></pre>
+<p>左括号 ( 应和函数关键词紧贴在一起；右括号 ) 除后面是 ) 或者 . 以外，其他一律用空格隔开它们；</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">fun1</span><span class="params">(<span class="variable">$var1</span>, <span class="variable">$var2</span>)</span> {</span>
+
+}
+
+<span class="keyword">exit</span>(json_encode(<span class="variable">$data</span>));</code></pre>
+<p>每段较大的程序体，上、下应当加入空白行，两个程序块之间只使用1个空行，禁止使用多行。少于15行的程序块，可不加上下空白行。</p>
+<h4>函数的缩进</h4>
+<ul>
+<li>函数参数的命名和变量的命名规范一致；</li>
+<li>函数定义中的左小括号 ( ，与函数名紧挨，中间无需空格；</li>
+<li>开始的左大括号与函数定义为同一行，中间加一个空格，不要另起一行；</li>
+<li>具有默认值的参数应该位于参数列表的后面；</li>
+<li>函数调用与定义的时候参数与参数之间加入一个空格；</li>
+<li>必须仔细检查并切实杜绝函数起始缩进位置与结束缩进位置不同的现象；</li>
+</ul>
+<p>符合规范的定义：</p>
+<pre><code><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">index</span><span class="params">(<span class="variable">$string</span>, <span class="variable">$operation</span>, <span class="variable">$key</span> = <span class="string">''</span>)</span> {</span>
+    <span class="comment">//函数体</span>
+}</code></pre>
+<p>不符合规范的定义：</p>
+<pre><code><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">authcode</span> <span class="params">(<span class="variable">$string</span>,<span class="variable">$key</span>=<span class="string">''</span>,<span class="variable">$operation</span>)</span>
+{</span>
+    <span class="comment">//函数体</span>
+}</code></pre>
+<h4>引号</h4>
+<p>PHP中单引号和双引号具有不同的含义，最大的几项区别如下：</p>
+<ul>
+<li>单引号中，任何变量(<code>$var</code>)、特殊转义字符(如 <code>\t \r \n</code> 等)不会被解析，因此PHP的解析速度更快，转义字符仅仅支持 <code>\&#39;</code> 和 <code>\\</code> 这样对单引号和反斜杠本身的转义；  </li>
+<li>双引号中，变量(<code>$var</code>)值会代入字符串中，特殊转义字符也会被解析成特定的单个字符，这样虽然程序编写更加方便，但同时PHP的解析也很慢；  </li>
+<li>数组中，如果下标不是整型，而是字符串类型，请务必用单引号将下标括起，正确的写法为<code>$array[&#39;key&#39;]</code>，而不是<code>$array[key]</code>；因为不正确的写法会使PHP解析器认为key是一个常量，进而先判断常量是否存在，不存在时才以 key 作为下标带入表达式中，同时出发错误事件，产生一条Notice级错误。</li>
+</ul>
+<p>因此，在绝大多数可以使用单引号的场合，禁止使用双引号。依据上述分析，可以或必须使用单引号的情况包括但不限于下述：</p>
+<ul>
+<li>字符串为固定值，不包含 <code>\t</code> 等特殊转义字符；</li>
+<li>数组的固定下标，例如：<code>$array[&#39;key&#39;];</code>；</li>
+<li>表达式中不需要带入变量，例如：<code>$string = &#39;test&#39;;</code>， 而非：<code>$string = &quot;test$var&quot;;</code>；</li>
+<li>数据库SQL语句中，所有数据必须加单引号，无论数值还是字串，以避免可能的注入漏洞和SQL错误。</li>
+</ul>
+
+        
+      </div>
+
+      <footer>
+        
+        
   
-      <section class="post">
-        <a href="/2013/09/13/Javascript-syntax/" title="Javascript编码规范">
-        <h1>Javascript编码规范</h1>
-        <time datetime="2013-09-13T03:54:03.000Z">Sep 13 2013</time>
-        </a>
-      </section>
-  
-      <section class="post">
-        <a href="/2013/09/13/css-syntax/" title="CSS编码规范">
-        <h1>CSS编码规范</h1>
-        <time datetime="2013-09-13T03:54:03.000Z">Sep 13 2013</time>
-        </a>
-      </section>
+  <div class="tags">
+    <a href="/tags/php/">php</a>, <a href="/tags/编码规范/">编码规范</a>, <a href="/tags/团队协作/">团队协作</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+        <div class="clearfix"></div>
+      </footer>
+    </div>
+  </article>
   
 </div>
+  
+    <div id="content" class="inner">
+  <article class="post">
+    
+    <div class="post-content">
+      <header>
+        
+          <div class="icon"></div>
+          <time datetime="2013-09-13T03:54:03.000Z"><a href="/2013/09/13/Javascript-syntax/">9月 13 2013</a></time>
+        
+        
+  
+    <h1 class="title"><a href="/2013/09/13/Javascript-syntax/">Javascript编码规范</a></h1>
+  
 
+      </header>
+      <div class="entry">
+        
+          <h2>命名规范</h2>
+<h4>通用命名规则</h4>
+<ul>
+<li>所有变量必须是有意义的英文，严厉禁止拼音；  </li>
+<li>变量命名采用小驼峰法(第一个单词首字母小写，其余单词首字母大写)；  </li>
+<li>变量允许使用公认英文缩写，例如<code>nav</code>；  </li>
+<li>常量必须所有单词大写，并且每个单词间加下划线；  </li>
+<li>类命名必须是大驼峰法(所有单词第一个字母均大写)；  </li>
+<li>私有类的变量属性成员， 建议使用混合式命名，并前面下下划线；  </li>
+<li>“on”只能用作事件的命名；  </li>
+<li>所有全局变量必须初始化；  </li>
+<li>保留字以及特有的dom属性不能作为变量名。  </li>
+</ul>
+<h4>变量命名规范</h4>
+<p>类型前缀 + 有意义的单词</p>
+<ul>
+<li>字符串：sXXX，如：sName，sHtml；</li>
+<li>数字：nXXX，如：nPage，nTotal；</li>
+<li>逻辑：bXXX，如：bChecked，bHasLogin；</li>
+<li>数组：aXXX，如：aList，aGroup；</li>
+<li>正则：rXXX，如：rDomain，rEmail；</li>
+<li>函数：fXXX，如：fGetList；</li>
+<li>DOM节点：dXX，如：dDiv，dSpan；</li>
+<li>其他类型：oXXX，如：oButton，oDate；</li>
+<li>特殊简写：小范围作用域临时变量，如函数内部的局部变量或参数：o(Object)、e(Element)、evt(event)、err(errot)等；</li>
+<li>循环变量：i、j、k以此类推；</li>
+</ul>
+<h4>函数命名规范</h4>
+<ul>
+<li>普通函数：动词+名词，如：fGetList、fGetVersion；</li>
+<li>涉及逻辑返回值的函数：is、has、can，如：fisAdmin、fhasChild；</li>
+<li>内部函数：_f+上面规则，如：fLoopCount；</li>
+</ul>
+<h2>书写规范</h2>
+<h4>对齐和缩进</h4>
+<ul>
+<li>必须使用 Tab 键进行代码缩进，以节约代码大小，建议设置编辑器的tab为4个空格的宽度（而不是4个空格）；</li>
+<li>所有语句结束后，必须使用 ; 号结束；</li>
+<li>大括号前面不能换行；</li>
+<li>操作符必须使用空格隔开；</li>
+</ul>
+<h4>语法结构</h4>
+<p>普通代码段应该如下：</p>
+<pre><code><span class="function"><span class="title">while</span><span class="params">(!is<span class="variable">Done</span>)</span> {
+    <span class="title">doSomething</span><span class="params">()</span>;
+    <span class="title">isDone</span> = <span class="title">moreToDo</span><span class="params">()</span>;
+}</code></pre>
+<p>变量定义方法如下：</p>
+<pre><code><span class="title">var</span> a = null;
+<span class="title">var</span> b = <span class="number">1</span>;
+<span class="title">var</span> c = <span class="number">0</span>;</code></pre>
+<p>函数定义方法如下：</p>
+<pre><code>var funcA = <span class="keyword">function</span>() {
+    var a = <span class="number">0</span>;
+    <span class="keyword">...</span>
+}</code></pre>
+<p>if 语句应该像这样：</p>
+<pre><code><span class="function"><span class="title">if</span><span class="params">(some<span class="variable">Condition</span>)</span> {
+    <span class="title">statements</span>;
+} <span class="title">else</span> <span class="title">if</span><span class="params">(some<span class="variable">OtherCondition</span>)</span> {
+    <span class="title">statements</span>;
+} <span class="title">else</span> {
+    <span class="title">statements</span>;
+}</code></pre>
+<p>for 语句应该像这样：</p>
+<pre><code><span class="function"><span class="title">for</span><span class="params">(initialization; condition; update)</span> {
+    <span class="title">statements</span>;
+}</code></pre>
+<p>while 语句应该像这样：</p>
+<pre><code><span class="function"><span class="title">while</span><span class="params">(!is<span class="variable">Done</span>)</span> {
+    <span class="title">doSomething</span><span class="params">()</span>;
+    <span class="title">isDone</span> = <span class="title">moreToDo</span><span class="params">()</span>;
+}</code></pre>
+<p>do … while 语句应该像这样：</p>
+<pre><code><span class="keyword">do</span> {
+    statements;
+} <span class="keyword">while</span>(<span class="keyword">condition</span>);</code></pre>
+<p>switch 语句应该像这样： </p>
+<pre><code>switch(condition) {
+    case <span class="string">"A"</span>: 
+        statements<span class="comment">;</span>
+        <span class="keyword">break</span><span class="comment">;</span>
+    case <span class="string">"B"</span>: 
+        statements<span class="comment">;</span>
+        <span class="keyword">break</span><span class="comment">;</span>
+    default:
+        statements<span class="comment">;</span>
+        <span class="keyword">break</span><span class="comment">;</span>
+}</code></pre>
+<p>try … catch 语句应该像这样：</p>
+<pre><code><span class="keyword">try</span> <span class="cell">{
+    statements;
+}</span> <span class="keyword">catch</span>(ex) <span class="cell">{
+    statements;
+}</span> finally <span class="cell">{
+    statements;
+}</span></code></pre>
+<p>单行的 if - else，while 或者 for 语句也必须加入括号：</p>
+<pre><code><span class="function"><span class="title">if</span><span class="params">(condition)</span> {
+    <span class="title">statement</span>;
+}
+<span class="title">while</span><span class="params">(condition)</span> {
+    <span class="title">statement</span>;
+}
+
+<span class="title">for</span><span class="params">(intialization; condition; update)</span> {
+    <span class="title">statement</span>;
+}</code></pre>
+<h2>Javascript编写风格</h2>
+<h4>对象定义规范</h4>
+<p>在Javascript中，所有类型都是对象，包括string类型。函数的定义，统一使用以下方式：</p>
+<pre><code>var a = <span class="keyword">function</span>() {<span class="keyword">...</span>};</code></pre>
+<p>最后要加上 “;”号，不要再使用以下方式：</p>
+<pre><code><span class="function"><span class="keyword">function</span> <span class="title">a</span><span class="params">()</span> {</span>}</code></pre>
+<p>对象定义规范：</p>
+<ul>
+<li>string类型定义：<code>var str = &#39;xxxxxx&#39;;</code></li>
+<li>function类型定义：<code>var func = function() {...};</code></li>
+<li>array类型定义：<code>var arr = new Array();</code></li>
+<li>object类型定义：<code>var obj = {&#39;name&#39;: &#39;xxxxxx&#39;, &#39;age&#39;: &#39;10&#39;}</code></li>
+</ul>
+<h4>事件监听</h4>
+<p>开发中统一使用module.js对对象事件(DOM节点)进行监听。</p>
+<p><strong>块状节点：</strong>model-node，包括的标签：div、ul、li、dl、form等，例如：</p>
+<pre><code><span class="tag">&lt;<span class="title">div</span> <span class="attribute">model-node</span>=<span class="value">"testmodel"</span> <span class="attribute">model-args</span>=<span class="value">"name=testname&amp;value=testvalue"</span>&gt;</span><span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></pre>
+<p><strong>独立事件节点：</strong>event-node，包括的标签：a、span、label、strong、input、select、button、img、textarea、h1、h2、h3、h4、i等，例如：</p>
+<pre><code><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"javascript:void(0);"</span> <span class="attribute">event-node</span>=<span class="value">"testevent"</span> <span class="attribute">event-args</span>=<span class="value">"name=testname&amp;value=testvalue"</span>&gt;</span><span class="tag">&lt;/<span class="title">a</span>&gt;</span></code></pre>
+<p><strong>事件监听方法：</strong>load、click、mouseenter、mouseleave</p>
+
+        
       </div>
-      <footer><div id="footer" >
-	<div class="container main">
-		<div class="social-font">
-			
-			<a href="http://weibo.com/436062867" target="_blank" title="新浪微博"><i class="icon-sina-weibo"></i></a>
-			
-			
-			<a href="https://twitter.com/yangjiansky" target="_blank" title="twitter"><i class="icon-twitter"></i></a>
-			
-			
-			<a href="https://github.com/A-limon" target="_blank" title="github"><i class="icon-github"></i></a>
-			
-			
-			<a href="https://www.facebook.com/yangjian" target="_blank" title="facebook"><i class="icon-facebook-squared"></i></a>
-			
-		</div>
-		<p class="copyright">Powered by <a href="http://zespia.tw/hexo/" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2013 
-		
-		<a href="http://yuwenhui.github.io" title="Max Yu">Max Yu</a>
-		
-		</p>
+
+      <footer>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/Javascript/">Javascript</a>, <a href="/tags/编码规范/">编码规范</a>, <a href="/tags/团队协作/">团队协作</a>
   </div>
-</div></footer>
-      <script src="/js/jquery-2.0.1.min.js"></script>
-<script src="/js/prettify.js"></script>
-<script type="text/javascript">
-  $(window).load(function(){
-    $("pre").addClass("prettyprint");
-    prettyPrint();
-  })
-</script>
-    </body>
-  </html>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+        <div class="clearfix"></div>
+      </footer>
+    </div>
+  </article>
+  
+</div>
+  
+    <div id="content" class="inner">
+  <article class="post">
+    
+    <div class="post-content">
+      <header>
+        
+          <div class="icon"></div>
+          <time datetime="2013-09-13T03:54:03.000Z"><a href="/2013/09/13/css-syntax/">9月 13 2013</a></time>
+        
+        
+  
+    <h1 class="title"><a href="/2013/09/13/css-syntax/">CSS编码规范</a></h1>
+  
+
+      </header>
+      <div class="entry">
+        
+          <h2>命名规范</h2>
+<p>1.尽量使用英文命名原则，严格禁止拼音、数字<br>2.尽量不加缩写，除非已约定的缩写方式，如：nav<br>3.id和class全部小写，采用该版块的英文单词或组合命名，以中杠“-”分割，如：nav-tabs(导航标签/nav+tabs)  </p>
+<h2>书写规范</h2>
+<p>必须使用Tab进行代码缩进，建议设置Tab为4个空格的宽度，而不是4个空格；<br>属性与“{}”之间，属性名和值之间必须有空格，属性必须换行，“{}”必须换行显示(即使只有一个属性)，如：      </p>
+<pre><code><span class="class">.nav-tabs</span> <span class="rules">{
+    <span class="rule"><span class="attribute">border-bottom</span>:<span class="value"> <span class="number">1</span>px solid <span class="hexcolor">#ddd</span>;</span></span>
+<span class="rule">}</span></span></code></pre>
+<p>属性值后面必须加分号“;”，即使只有一个；<br>RGB颜色值有字母的必须采用小写，可缩写的尽量使用缩写，如：#ffcccc缩写为#fcc；<br>针对特殊浏览器的属性，应写在标准属性之前，左侧对齐，如：</p>
+<pre><code>-webkit-border-<span class="method">radius:</span> <span class="number">3</span>px;
+-moz-border-<span class="method">radius:</span> <span class="number">3</span>px;
+border-<span class="method">radius:</span> <span class="number">3</span>px;</code></pre>
+<p>按照元素模型由外及内，由整体到细节的书写顺序，属性值大致分为五组：</p>
+<ul>
+<li>位置：position,top,right,bottom,left,float</li>
+<li>盒模型属性：display,margin,padding,width,height</li>
+<li>边框与背景：border,background</li>
+<li>段落与文本：line-height,text-indent,font,color,text-decoration,text-align…</li>
+<li>其他属性：overflow,cursor,visibility,…</li>
+</ul>
+<p>标准的元素属性值顺序如：</p>
+<pre><code><span class="class">.carousel-control</span> <span class="rules">{
+    <span class="rule"><span class="attribute">position</span>:<span class="value"> absolute;</span></span>
+    <span class="rule"><span class="attribute">top</span>:<span class="value"> <span class="number">40</span>%;</span></span>
+    <span class="rule"><span class="attribute">left</span>:<span class="value"> <span class="number">15</span>px;</span></span>
+    <span class="rule"><span class="attribute">float</span>:<span class="value"> left;</span></span>
+    <span class="rule"><span class="attribute">display</span>:<span class="value"> inline-block;</span></span>
+    <span class="rule"><span class="attribute">margin-top</span>:<span class="value"> <span class="number">20</span>px;</span></span>
+    <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">5</span>px;</span></span>
+    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">40</span>px;</span></span>
+    <span class="rule"><span class="attribute">height</span>:<span class="value"> <span class="number">40</span>px;</span></span>
+    <span class="rule"><span class="attribute">border</span>:<span class="value"> <span class="number">3</span>px solid <span class="hexcolor">#fff</span>;</span></span>
+    <span class="rule"><span class="attribute">-webkit-border-radius</span>:<span class="value"> <span class="number">23</span>px;</span></span>
+    <span class="rule"><span class="attribute">-moz-border-radius</span>:<span class="value"> <span class="number">23</span>px;</span></span>
+    <span class="rule"><span class="attribute">border-radius</span>:<span class="value"> <span class="number">23</span>px;</span></span>
+    <span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="hexcolor">#222</span>;</span></span>
+    <span class="rule"><span class="attribute">line-height</span>:<span class="value"> <span class="number">30</span>px;</span></span>
+    <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">60</span>px;</span></span>
+    <span class="rule"><span class="attribute">font-weight</span>:<span class="value"> <span class="number">100</span>;</span></span>
+    <span class="rule"><span class="attribute">color</span>:<span class="value"> <span class="hexcolor">#fff</span>;</span></span>
+    <span class="rule"><span class="attribute">text-align</span>:<span class="value"> center;</span></span>
+    <span class="rule"><span class="attribute">opacity</span>:<span class="value"> <span class="number">0.5</span>;</span></span>
+    <span class="rule"><span class="attribute">filter</span>:<span class="value"> <span class="function">alpha(opacity=<span class="number">50</span>)</span>;</span></span>
+<span class="rule">}</span></span></code></pre>
+<p>class和id连写必须换行，如：</p>
+<pre><code><span class="class">.btn-primary</span><span class="pseudo">:hover</span>,
+<span class="class">.btn-primary</span><span class="pseudo">:focus</span>,
+<span class="class">.btn-primary</span><span class="pseudo">:active</span>,
+<span class="class">.btn-primary</span><span class="class">.active</span>,
+<span class="class">.btn-primary</span><span class="class">.disabled</span> <span class="rules">{
+    <span class="rule"><span class="attribute">color</span>:<span class="value"> <span class="hexcolor">#fff</span>;</span></span>
+<span class="rule">}</span></span></code></pre>
+<p>请勿使用冗余低效的CSS写法，如：</p>
+<pre><code><span class="title">ul</span> li a span {
+}</code></pre>
+<h2>注释规范</h2>
+<h4>文件头部注释</h4>
+<p>文件头部注释主要用来阐述此文件的名称，版本，作者。按照以下形式书写：</p>
+<pre><code>/<span class="variable">*!</span>
+ * family.css
+ * Version <span class="number">2013092614</span>
+ * Designed by <span class="variable">@yuwenhui</span> &lt;yuwenhui1986<span class="variable">@163</span>.com&gt;
+ <span class="variable">*/</span></code></pre>
+<p>其中版本号的格式为：yyyyMMDDHH</p>
+<h4>行内注释</h4>
+<p>行内注释主要说明本段代码所在的模块，如：</p>
+<pre><code>/<span class="variable">*家</span>谱主页<span class="variable">*/</span></code></pre>
+
+        
+      </div>
+
+      <footer>
+        
+        
+  
+  <div class="tags">
+    <a href="/tags/CSS/">CSS</a>, <a href="/tags/编码规范/">编码规范</a>, <a href="/tags/团队协作/">团队协作</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+        <div class="clearfix"></div>
+      </footer>
+    </div>
+  </article>
+  
+</div>
+  
+
+  <nav id="pagination">
+  
+  
+  <div class="clearfix"></div>
+</nav>
+</div>
+  <div class="clearfix"></div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 Max Yu
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+</body>
+</html>

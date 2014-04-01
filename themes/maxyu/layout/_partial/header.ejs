@@ -1,0 +1,13 @@
+<div class="blog-title">
+  <h1><a href="<%- config.root %>"><%= config.title %></a></h1>
+  <h4><a href="<%- config.root %>"><% if (config.subtitle){ %><%= config.subtitle %><% } %></a></h4>
+</div>
+<nav id="main-nav">
+  <ul>
+    <% for (var i in theme.menu){ %>
+      <li><a href="<%- theme.menu[i] %>"><%= i %></a></li>
+    <% } %>
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div>

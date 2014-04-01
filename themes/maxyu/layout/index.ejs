@@ -1,0 +1,26 @@
+<div id="content">
+  <div class="home-inner home-content">
+    <div class="blog-tagline"></div>
+    <% page.posts.each(function(item, k){ %>
+      <article class="home-post <% if(k%2 == 0){ %>even<% } else { %>odd<% } %>">
+        <div class="inner">
+          <header>
+            <% if (item.layout != 'page'){ %>
+              <div class="icon"></div>
+              <time datetime="<%= item.date.toDate().toISOString() %>"><%= item.date.format(config.date_format) %></time>
+            <% } %>
+            <h1 class="title"><a href="<%- config.root %><%- item.path %>"><%= item.title %></a></h1>
+          </header>
+          <div class="entry">
+            <%- item.description %>
+          </div>
+          <a class="more" href="<%- config.root %><%- item.path %>">查看详细</a>
+        </div>
+      </article>
+      <div class="clear"></div>
+    <% }); %>
+  </div>
+  <div class="home-inner">
+    <%- partial('_partial/pagination') %>
+  </div>
+</div>
